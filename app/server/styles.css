@@ -41,6 +41,10 @@ main > .row:last-of-type {
 	margin-bottom: 0;
 }
 
+input[name='color'] {
+	width: 80%;
+}
+
 .options label {
 	line-height: 21px;
 }
