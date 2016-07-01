@@ -40,39 +40,60 @@ main > .row {
 main > .row:last-of-type {
 	margin-bottom: 0;
 }
+
+input[name='color'] {
+	width: 80%;
+}
+
 .options label {
 	line-height: 21px;
 }
-.options input[type=checkbox] {
-	display: none;
-}
-.options input[type=checkbox] + label {
-	width:22px;
-	height: 21px;
+
+.options .color-button {
+	vertical-align: top;
+	width:10px;
+	height: 24px;
 	display:inline-block;
-	padding-left:40px;
+	padding-left:20px;
 	background: url('checkbox-sprite.jpg') no-repeat;
 	font-weight: normal;
+	border: 0;
 }
 
-.options input[type=checkbox]#white + label {
+.options .color-button:focus,
+.options .color-button:active {
+	border: 0;
+}
+
+.options .color-button + label {
+	vertical-align: top;
+	display: inline-block;
+	width: 100%;
+	width:22px;
+	height: 21px;
+	font-weight: normal;
+	border: 0;
+}
+
+.options .color-button#white {
 background-position: 0 0;	
 }
 
-.options input[type=checkbox]#silver + label {
+.options .color-button#silver {
 background-position: 0 -35px;	
 }
-.options input[type=checkbox]#black + label {
+.options .color-button#black {
 background-position: 0 -71px;	
 }
 
-.options input[type=checkbox]#gray + label {
+.options .color-button#gray {
 background-position: 0 -108px;	
 }
 
-.options input[type=checkbox]:checked + label {
+.options .color-button:checked {
 	color:pink;
 }
+
 
 .car-column {
 	font-family: 'Lato', sans-serif;
@@ -114,4 +135,3 @@ background-position: 0 -108px;
 	color:#149ed0;
 	display: block;
 }
-
