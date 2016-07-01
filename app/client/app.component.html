@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+
+    <aside class="col-sm-2">
+        <div>
+            <input type="text" name="color" [(ngModel)]="selectedColor" />
+            <button (click)="changeColor()" class="btn btn-default btn-xs">...</button>
+            
+        </div>        
+        <div class="options">
+        <h6>Color</h6>
+        <ul class="list-unstyled">
+            <li *ngFor="let color of colors">
+              <div (click)="changeColor(color)">
+                <input [id]="color | lowercase" type="checkbox" [value]="color" /><label>  {{color}}</label>
+              </div>
+            </li>
+        </ul>
+        </div>
+    </aside>
+
+    <main class="col-sm-10">
+        <div class="row" *ngFor="let vehicleRow of vehicles">
+			
+          <div class="col-sm-3" *ngFor="let vehicle of vehicleRow">
+            <div class="car-column clearfix">
+              <img [src]="vehicle.imageUrl" class="img-responsive">
+              <div class="row car-info-wrap">
+                <div class="col-sm-6">
+                  <span class="year-make">{{vehicle.title}}</span>
+                  <span class="model">SRX</span>
+                  <span class="edition">LUXURY COLLECTION</span>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <span class="miles">30K MILES</span>
+                  <span class="price">$20,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </main>
+
+    </div>
+</div>
