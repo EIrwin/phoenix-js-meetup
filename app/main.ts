@@ -1,6 +1,12 @@
-import 'zone.js/dist/zone';
-import 'reflect-metadata';
-import { bootstrap } from '@angular/platform-browser-dynamic';
+// import 'zone.js/dist/zone';
+// import 'reflect-metadata';
+
+import 'angular2-universal/polyfills';
+import { 
+    bootstrap 
+} from 'angular2-universal';
+
+// import { bootstrap } from '@angular/platform-browser-dynamic';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {AppComponent} from './client/app.component';
 

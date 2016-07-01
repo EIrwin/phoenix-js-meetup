@@ -1,3 +1,14 @@
+import 'angular2-universal/polyfills';
+import { 
+    provide, 
+    expressEngine,
+    ORIGIN_URL, 
+    NODE_ROUTER_PROVIDERS,
+    NODE_HTTP_PROVIDERS,
+    REQUEST_URL,
+    BASE_URL
+} from 'angular2-universal';
+
 // Express
 import * as path from 'path';
 import * as express from 'express';
@@ -6,13 +17,39 @@ let port = 3000;
 const app = express();
 const ROOT = path.join(path.resolve(__dirname, '../..'));
 
+app.engine('html', expressEngine);
+app.set('view engine', 'html');
+
 // Views
 app.set('views', __dirname);
 
+import {AppComponent} from "../client/app.Component";
+
 // Route
-app.get('/search', (req, res) => {
-    res.sendFile('index.html', {root: __dirname});
+// app.get('/search', (req, res) => {
+//     res.sendFile('index.html', {root: __dirname});
+// });
+
+app.use('/search', (req, res) => {
+    let baseUrl = '/';
+    let url = req.originalUrl || '/';
+
+    res.render('index', {
+        directives: [AppComponent],
+        platformProviders: [
+            provide(ORIGIN_URL, { useValue: 'http://localhost:' + port }),
+            provide(BASE_URL, {useValue: baseUrl})
+        ],
+        providers: [
+            provide(REQUEST_URL, {useValue: url}),
+            NODE_ROUTER_PROVIDERS,
+            NODE_HTTP_PROVIDERS
+        ],
+        async: false,
+        preboot: false
+    });
 });
+
 
 // serve static files
 app.use(express.static(ROOT, { index: false }));
