@@ -46,7 +46,7 @@ app.use('/search', (req, res) => {
             NODE_HTTP_PROVIDERS
         ],
         async: false,
-        preboot: false
+        preboot: true
     });
 });
 

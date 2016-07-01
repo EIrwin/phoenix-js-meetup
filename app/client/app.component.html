@@ -12,7 +12,7 @@
         <ul class="list-unstyled">
             <li *ngFor="let color of colors">
               <div (click)="changeColor(color)">
-                <input [id]="color | lowercase" type="checkbox" [value]="color" /><label>  {{color}}</label>
+                <button [id]="color | lowercase" class="color-button" [value]="color"></button><label>  {{color}}</label>
               </div>
             </li>
         </ul>
